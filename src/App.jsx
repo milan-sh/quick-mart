@@ -1,10 +1,12 @@
 import React from 'react'
-import Nav from './components/Header/Nav'
+import { Nav, CategoriesSection, Hero } from './components'
 
 function App() {
   return (
-    <div className='font-roboto'>
+    <div className='font-roboto bg-primaryBg'>
       <Nav/>
+      <CategoriesSection/>
+      <Hero/>
     </div>
   )
 }
