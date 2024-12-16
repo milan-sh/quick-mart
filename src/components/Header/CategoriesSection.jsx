@@ -17,6 +17,18 @@ const CategoriesSection = () => {
       heading="Fragrance"
       />
       <Category
+      src="fashion.webp"
+      heading="Fashion"
+      />
+      <Category
+      src="kitchen.jpg"
+      heading="Kitchen"
+      />
+      <Category
+      src="electronics.jpg"
+      heading="Electronics"
+      />
+      <Category
       src="furniture.jpg"
       heading="Furniture"
       />

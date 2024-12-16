@@ -11,7 +11,7 @@ import {
 
 const Nav = () => {
   return (
-    <nav className="p-4 bg-secondaryBg text-white flex items-center justify-between">
+    <nav className="p-4 sticky top-0 z-20 bg-secondaryBg text-white flex items-center justify-between">
       <div className="flex items-center justify-center gap-x-6">
         <FontAwesomeIcon className="md:hidden" icon={faBars} size="2xl" />
         <Logo />
