@@ -16,14 +16,14 @@ const Nav = () => {
         <FontAwesomeIcon className="md:hidden" icon={faBars} size="2xl" />
         <Logo />
       </div>
-      <button className="hidden md:flex items-end justify-start gap-1 leading-none">
+      <button className="hidden lg:flex items-end justify-start gap-1 leading-none">
         <FontAwesomeIcon icon={faLocationDot} size="lg"/>
         <div>
           <p className="text-xs text-secondaryText">Delivering to Kakrola 110078</p>
           <h2 className="text-sm text-left leading-none">Update location</h2>
         </div>
       </button>
-      <div className="hidden search md:flex gap-0 min-w-[50%]">
+      <div className="hidden search md:flex gap-0 md:min-w-[40%] lg:min-w-[50%]">
         <input
           className="outline-none text-pirmaryText px-2 rounded-l-sm py-2 w-full"
           type="text"

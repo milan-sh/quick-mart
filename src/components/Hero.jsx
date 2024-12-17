@@ -16,18 +16,18 @@ const Hero = () => {
     fetchData();
   }, []);
   return (
-    <div className="bg-white p-4 m-4 flex flex-wrap gap-8 items-center justify-center">
+    <div className="bg-white md:p-4 p-2 m-4 flex flex-wrap md:gap-8 gap-4 items-center justify-evenly">
       {data &&
         data.map((item) => (
           <div
             key={item.id}
-            className="shadow-custom w-fit p-4 rounded-md flex flex-col items-center gap-y-3    "
+            className="md:shadow-custom border border-secondaryText w-[40vw] md:w-[25vw] h-auto lg:w-fit md:p-4 p-2 rounded-md flex flex-col md:items-center md:gap-y-3 gap-y-1"
           >
-            <img className="h-60" src={item.thumbnail} alt="" />
-            <h3>{item.title}</h3>
+            <img className="h-auto w-full mb-1" src={item.thumbnail} alt="" />
+            <h3 className="text-sm font-semibold md:text-base">{item.title}</h3>
             <div>
               <div className="flex items-center gap-x-2">
-                <div className="bg-border text-white px-2 py-[2px] rounded-md text-sm">
+                <div className="bg-border text-white px-2 py-[2px] rounded-md text-xs md:text-base">
                   <p className="flex items-center gap-x-1">
                     {item.rating.toFixed(1)}{" "}
                     <span>
@@ -35,21 +35,23 @@ const Hero = () => {
                     </span>
                   </p>
                 </div>
-                <p className="text-gray-500 font-semibold">
+                <p className="text-gray-500 font-semibold text-xs md:text-base">
                   ({item.reviews.length})
                 </p>
               </div>
             </div>
-            <div className="flex justify-between items-center gap-x-3">
-              <p className="font-semibold text-lg text-pirmaryText">
-                ₹{Math.round(item.price * 80)}
-              </p>
-              <p className="text-gray-500 line-through">
-                ₹
-                {Math.round(
-                  item.price * 80 * (1 + item.discountPercentage / 100)
-                )}
-              </p>
+            <div className="flex flex-col md:flex-row justify-between md:items-center gap-x-3">
+              <div className="flex md:justify-center items-center gap-x-3">
+                <p className="font-semibold md:text-lg text-pirmaryText">
+                  ₹{Math.round(item.price * 80)}
+                </p>
+                <p className="text-gray-500 line-through md:text-base text-sm">
+                  ₹
+                  {Math.round(
+                    item.price * 80 * (1 + item.discountPercentage / 100)
+                  )}
+                </p>
+              </div>
               <p className="text-rating text-sm">
                 {Math.floor(item.discountPercentage)}% off
               </p>

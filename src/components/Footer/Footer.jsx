@@ -6,8 +6,10 @@ import { faCopyright } from "@fortawesome/free-solid-svg-icons";
 const Footer = () => {
   return (
     <footer className="bg-secondaryBg p-8">
-      <div className="grid grid-cols-3 p-4 justify-items-center">
-        <Logo />
+      <div className="grid grid-cols-2 lg:grid-cols-3 p-4 justify-items-center">
+        <div className="hidden lg:block">
+          <Logo />
+        </div>
         <div>
           <h4 className="text-white mb-2 font-semibold">Get to Know Us</h4>
           <ul className="text-secondaryText text-sm">
@@ -28,12 +30,12 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a>
-                Twitter
-              </a>
+              <a>Twitter</a>
             </li>
             <li>
-              <a  href="https://github.com/milan-sh" target="_blank">Github</a>
+              <a href="https://github.com/milan-sh" target="_blank">
+                Github
+              </a>
             </li>
           </ul>
         </div>

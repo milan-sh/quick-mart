@@ -17,7 +17,7 @@ const Banner = () => {
         navigation
         autoplay={true}
         pagination={{ clickable: true }}
-        className="flex justify-center items-center h-[30vh]"
+        className="flex justify-center items-center md:h-[10vh] lg:h-[30vh] h-[10vh] w-full rounded-xl"
         style={{
             '--swiper-navigation-color': '#ff5722',
             '--swiper-pagination-color': '#ff5722',
@@ -25,9 +25,9 @@ const Banner = () => {
           }}
         
       >
-        <SwiperSlide><img className="m-auto min-w-full h-full object-cover" src="/banners/1.png" alt="Banner 1" /></SwiperSlide>
-        <SwiperSlide><img className="m-auto min-w-full h-full object-cover" src="/banners/2.png" alt="Banner 2" /></SwiperSlide>
-        <SwiperSlide><img className="m-auto min-w-full h-full object-cover" src="/banners/3.png" alt="Banner 3" /></SwiperSlide>
+        <SwiperSlide><img className="m-auto w-full h-full object-cover" src="/banners/1.png" alt="Banner 1" /></SwiperSlide>
+        <SwiperSlide><img className="m-auto w-full h-full object-cover" src="/banners/2.png" alt="Banner 2" /></SwiperSlide>
+        <SwiperSlide><img className="m-auto w-full h-full object-cover" src="/banners/3.png" alt="Banner 3" /></SwiperSlide>
       </Swiper>
     </div>
   );

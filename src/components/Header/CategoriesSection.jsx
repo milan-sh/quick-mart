@@ -3,7 +3,7 @@ import Category from './Category'
 
 const CategoriesSection = () => {
   return (
-    <div className='bg-white m-4 p-4 flex items-center justify-around'>
+    <div className='bg-white m-4 p-4 grid grid-cols-4 md:grid-cols-8 gap-y-4'>
       <Category
       src="groceries.jpg"
       heading="Grocery"
