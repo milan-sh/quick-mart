@@ -9,7 +9,7 @@ export default {
       colors:{
         'primaryBg': '#F1F2F4',
         'secondaryBg': '#131921',
-        'button': '#F7CA00',
+        'button': '#FF9F00',
         'border': '#FB7C0D',
         'pirmaryText' : '#000000',
         'secondaryText' : '#ccc',
