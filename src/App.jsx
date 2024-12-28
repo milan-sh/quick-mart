@@ -1,7 +1,9 @@
+import Home from "./pages/Home"
+
 const App = () => {
   return (
-    <div className="bg-primaryBgColor min-h-screen w-full">
-      
+    <div>      
+      <Home/>
     </div>
   )
 }
