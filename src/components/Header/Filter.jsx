@@ -3,7 +3,7 @@ import Button from "../Button"
 
 const Filter = () => {
   return (
-    <div className="hidden shadow-custom px-4 py-2 md:flex justify-between items-center">
+    <div className="hidden shadow-custom px-4 py-2 md:flex justify-between items-center mb-2">
       <div className="flex items-center justify-between gap-x-2 w-fit hover:text-primaryButtonColor">
         {/* Swap component */}
         <label className="swap swap-rotate">
@@ -61,6 +61,7 @@ const Filter = () => {
             </li>
           </ul>
         </div>
+        <Button content="Contact" />
       </div>
       <div className="flex justify-between items-center gap-x-2 font-medium text-base">
         <button className="hover:text-primaryButtonColor">About Us</button>
