@@ -1,5 +1,5 @@
 import React from "react";
-import { Filter, Nav, SearchInput, Sliders } from "../components";
+import { Filter, HeadingCard, Nav, SearchInput, Sliders } from "../components";
 
 // import Swiper core and required modules
 import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
@@ -11,6 +11,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+
+import { category } from "./category";
 
 const Home = () => {
   return (
@@ -57,6 +59,26 @@ const Home = () => {
             />
           </SwiperSlide>
         </Swiper>
+      </div>
+      <div className="p-4">
+        <HeadingCard category="Shop by categories" link="See all categories" />
+      </div>
+      <div className="m-4 flex items-center justify-between overflow-auto rounded-lg">
+        {category.map((item) => (
+          <button
+            key={item.id}
+            className="flex flex-col justify-between items-center gap-y-3 p-2 hover:border hover:border-gray-300 rounded-lg"
+          >
+            <div className="p-2 bg-gray-300 rounded-lg">
+              <img
+                className="md:h-20 h-40 md:min-w-full min-w-48 object-cover rounded-md"
+                src={`/category-images/${item.src}`}
+                alt=""
+              />
+            </div>
+            <h3 className="text-secondaryBgColor font-medium">{item.name}</h3>
+          </button>
+        ))}
       </div>
     </div>
   );
