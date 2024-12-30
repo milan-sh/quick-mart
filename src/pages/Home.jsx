@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Filter, HeadingCard, Nav, SearchInput, Sliders } from "../components";
 
 // import Swiper core and required modules
@@ -13,8 +13,24 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
 import { category } from "./category";
+import axios from "axios";
 
 const Home = () => {
+  const [data, setData] = useState(null);
+
+  const API_URL = "https://dummyjson.com/products?limit=90";
+  useEffect(() => {
+    async function fetchProduts() {
+      try {
+        const response = await axios.get(API_URL);
+        setData(response.data.products);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchProduts();
+  }, []);
+
   return (
     <div className="min-h-screen bg-primaryBgColor">
       <Nav />
@@ -79,6 +95,29 @@ const Home = () => {
             <h3 className="text-secondaryBgColor font-medium">{item.name}</h3>
           </button>
         ))}
+      </div>
+      <div className="p-4 bg-gray-200">
+        <HeadingCard category="Explore Products" className="bg-white" />
+        <div className="my-4 grid md:grid-cols-5 grid-cols-2 gap-4 flex-wrap">
+          {data &&
+            data.map((item) => (
+              <div key={item.id} className="bg-white rounded-lg">
+                <img className="border-0 rounded-t-lg" src={item.thumbnail} alt={item.title} />
+                <div className="p-4 ">
+                  <h3 className="md:hidden md:text-xl text-lg font-medium mb-2 text-wrap h-14 leading-5">{(item.title).slice(0, 32)}</h3>
+                  <h3 className="hidden md:block md:text-xl text-base font-medium mb-2 text-wrap h-14">{(item.title).slice(0,35)}</h3>
+                  <p className="font-semibold text-lg mb-2">Rs. {Math.round(Number(item.price) * 85.49)}.00</p>
+                  <div className="h-1 min-w-full bg-gray-200 rounded-full">
+                    <div className="min-h-full bg-green rounded-full" style={{width: `${item.stock}%`}}></div>
+                  </div>
+                  <p className="text-green font-medium text-base">{item.stock} in stock</p>
+                  <button className="bg-primaryButtonColor text-white py-2 rounded-md mt-4 font-medium min-w-full cursor-pointer hover:bg-secondaryBgColor">
+                    Add To Cart
+                  </button>
+                </div>
+              </div>
+            ))}
+        </div>
       </div>
     </div>
   );

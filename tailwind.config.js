@@ -10,7 +10,7 @@ export default {
         primaryBgColor: "#F5F5F5",
         secondaryBgColor: "#011F2D",
         primaryButtonColor: "#0062EE",
-        green: "#008060",
+        green: "#008A00",
         red: "#DC1D1D",
       },
       boxShadow:{
