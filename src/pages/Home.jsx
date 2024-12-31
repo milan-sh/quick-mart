@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Filter, HeadingCard, Nav, SearchInput, Sliders } from "../components";
+import { Filter, HeadingCard, Nav, SearchInput, Sliders, Footer } from "../components";
 
 // import Swiper core and required modules
 import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
@@ -193,6 +193,9 @@ const Home = () => {
             <p>A: Yes, Quick Mart accepts returns or exchanges within 7 days of delivery, provided the items are in their original packaging and condition. Please contact our support team for assistance.</p>
           </div>
         </div>
+      </div>
+      <div>
+        <Footer/>
       </div>
     </div>
   );

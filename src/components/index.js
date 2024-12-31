@@ -3,5 +3,6 @@ import Filter from "./Header/Filter";
 import Sliders from "./Sliders";
 import SearchInput from "./SearchInput";
 import HeadingCard from "./HeadingCard";
+import Footer from "./Footer/Footer";
 
-export {Nav, Filter, Sliders, SearchInput, HeadingCard}
+export {Nav, Filter, Sliders, SearchInput, HeadingCard, Footer}
