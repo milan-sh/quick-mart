@@ -28,7 +28,7 @@ export const rating = [
   },
   {
     id: 4,
-    name: "Michael Johnson",
+    name: "Starlight",
     rating: 5,
     review: "Good value for money and reliable.",
     imageName: "user4.jpg",

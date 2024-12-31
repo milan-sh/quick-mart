@@ -136,7 +136,7 @@ const Home = () => {
         </div>
       </div>
       <div className="p-4 bg-gray-200">
-        <HeadingCard category="Loved by customers" className="bg-white"/>
+        <HeadingCard category="Loved by customers" className="bg-white" />
         <div className="grid md:grid-cols-4 grid-cols-2 gap-2 py-6">
           {rating.map(
             (user) => (
@@ -149,10 +149,10 @@ const Home = () => {
                 </p>
                 <p className="text-center mt-2">{user.review}</p>
                 <img
-                    src={`/reviewers/${user.imageName}`}
-                    alt={`/reviewers/${user.imageName}`}
-                    className="rounded-full h-14 w-14 object-cover mx-auto mt-2  hover:scale-110 transition duration-700 ease-in-out"
-                  />
+                  src={`/reviewers/${user.imageName}`}
+                  alt={`/reviewers/${user.imageName}`}
+                  className="rounded-full h-14 w-14 object-cover mx-auto mt-2  hover:scale-110 transition duration-700 ease-in-out"
+                />
                 <div className="flex flex-col items-center p-4 text-center">
                   <h2 className="card-title m-0">{user.name}</h2>
                   <p className="font-medium">{user.role}</p>
@@ -162,6 +162,36 @@ const Home = () => {
             ),
             []
           )}
+        </div>
+      </div>
+      <div className="bg-white p-4">
+        <HeadingCard category="FAQs" />
+        <div className="collapse collapse-plus bg-base-200 py-4">
+          <input type="radio" name="my-accordion-3" defaultChecked />
+          <div className="collapse-title text-xl font-medium">
+          Q: What are your delivery hours?
+          </div>
+          <div className="collapse-content">
+            <p>A: Quick Mart offers delivery from 8:00 AM to 10:00 PM daily. You can choose a delivery time slot that suits you during checkout.</p>
+          </div>
+        </div>
+        <div className="collapse collapse-plus bg-base-200">
+          <input type="radio" name="my-accordion-3" />
+          <div className="collapse-title text-xl font-medium">
+          Q: Is there a minimum order value for free delivery?
+          </div>
+          <div className="collapse-content">
+            <p>A: Yes, free delivery is available for orders above $50. For orders below this amount, a small delivery fee will apply.</p>
+          </div>
+        </div>
+        <div className="collapse collapse-plus bg-base-200">
+          <input type="radio" name="my-accordion-3" />
+          <div className="collapse-title text-xl font-medium">
+          Q: Can I return or exchange items?
+          </div>
+          <div className="collapse-content">
+            <p>A: Yes, Quick Mart accepts returns or exchanges within 7 days of delivery, provided the items are in their original packaging and condition. Please contact our support team for assistance.</p>
+          </div>
         </div>
       </div>
     </div>
