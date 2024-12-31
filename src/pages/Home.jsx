@@ -14,6 +14,7 @@ import "swiper/css/scrollbar";
 
 import { category } from "./category";
 import axios from "axios";
+import { rating } from "./rating";
 
 const Home = () => {
   const [data, setData] = useState(null);
@@ -102,21 +103,65 @@ const Home = () => {
           {data &&
             data.map((item) => (
               <div key={item.id} className="bg-white rounded-lg">
-                <img className="border-0 rounded-t-lg" src={item.thumbnail} alt={item.title} />
+                <img
+                  className="border-0 rounded-t-lg"
+                  src={item.thumbnail}
+                  alt={item.title}
+                />
                 <div className="p-4 ">
-                  <h3 className="md:hidden md:text-xl text-lg font-medium mb-2 text-wrap h-14 leading-5">{(item.title).slice(0, 32)}</h3>
-                  <h3 className="hidden md:block md:text-xl text-base font-medium mb-2 text-wrap h-14">{(item.title).slice(0,35)}</h3>
-                  <p className="font-semibold text-lg mb-2">Rs. {Math.round(Number(item.price) * 85.49)}.00</p>
+                  <h3 className="md:hidden md:text-xl text-lg font-medium mb-2 text-wrap h-14 leading-5">
+                    {item.title.slice(0, 32)}
+                  </h3>
+                  <h3 className="hidden md:block md:text-xl text-base font-medium mb-2 text-wrap h-14">
+                    {item.title.slice(0, 35)}
+                  </h3>
+                  <p className="font-semibold text-lg mb-2">
+                    Rs. {Math.round(Number(item.price) * 85.49)}.00
+                  </p>
                   <div className="h-1 min-w-full bg-gray-200 rounded-full">
-                    <div className="min-h-full bg-green rounded-full" style={{width: `${item.stock}%`}}></div>
+                    <div
+                      className="min-h-full bg-green rounded-full"
+                      style={{ width: `${item.stock}%` }}
+                    ></div>
                   </div>
-                  <p className="text-green font-medium text-base">{item.stock} in stock</p>
+                  <p className="text-green font-medium text-base">
+                    {item.stock} in stock
+                  </p>
                   <button className="bg-primaryButtonColor text-white py-2 rounded-md mt-4 font-medium min-w-full cursor-pointer hover:bg-secondaryBgColor">
                     Add To Cart
                   </button>
                 </div>
               </div>
             ))}
+        </div>
+      </div>
+      <div className="p-4 bg-gray-200">
+        <HeadingCard category="Loved by customers" className="bg-white"/>
+        <div className="flex items-center justify-between gap-x-2 py-6 overflow-auto">
+          {rating.map(
+            (user) => (
+              <div key={user.id} className="card min-w-[60vw] md:min-w-[22vw] shadow-xl bg-white p-4">
+                <p className="flex justify-center items-center">
+                  <span className="text-2xl text-orange-400 mr-2">
+                    {user.stars.map((star) => star)}
+                  </span>
+                  {user.rating} | 5 Reviews
+                </p>
+                <p className="text-center mt-2">{user.review}</p>
+                <img
+                    src={`/reviewers/${user.imageName}`}
+                    alt={`/reviewers/${user.imageName}`}
+                    className="rounded-full h-14 w-14 object-cover mx-auto mt-2  hover:scale-110 transition duration-700 ease-in-out"
+                  />
+                <div className="card-body items-center text-center">
+                  <h2 className="card-title m-0">{user.name}</h2>
+                  <p className="font-medium">{user.role}</p>
+                  <div className="card-actions"></div>
+                </div>
+              </div>
+            ),
+            []
+          )}
         </div>
       </div>
     </div>

@@ -1,0 +1,38 @@
+export const rating = [
+  {
+    id: 1,
+    name: "Alice Brown",
+    rating: 5.0,
+    review: "Absolutely fantastic service and quality!",
+    imageName: "user1.jpg",
+    role: "Verified Buyer",
+    stars: ["★", "★", "★", "★", "★"],
+  },
+  {
+    id: 2,
+    name: "Emily Davis",
+    rating: 3,
+    review: "Exceeded my expectations! Will buy again.",
+    imageName: "user2.jpg",
+    role: "Verified Buyer",
+    stars: ["★", "★", "★", "☆", "☆"],
+  },
+  {
+    id: 3,
+    name: "John Doe",
+    rating: 4,
+    review: "Great product! Highly recommended.",
+    imageName: "user3.jpg",
+    role: "Customer",
+    stars: ["★", "★", "★", "★", "☆"],
+  },
+  {
+    id: 4,
+    name: "Michael Johnson",
+    rating: 5,
+    review: "Good value for money and reliable.",
+    imageName: "user4.jpg",
+    role: "Customer",
+    stars: ["★", "★", "★", "★", "★"],
+  },
+];
