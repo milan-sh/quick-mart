@@ -137,11 +137,11 @@ const Home = () => {
       </div>
       <div className="p-4 bg-gray-200">
         <HeadingCard category="Loved by customers" className="bg-white"/>
-        <div className="flex items-center justify-between gap-x-2 py-6 overflow-auto">
+        <div className="grid md:grid-cols-4 grid-cols-2 gap-2 py-6">
           {rating.map(
             (user) => (
-              <div key={user.id} className="card min-w-[60vw] md:min-w-[22vw] shadow-xl bg-white p-4">
-                <p className="flex justify-center items-center">
+              <div key={user.id} className="card shadow-xl bg-white pt-4">
+                <p className="flex md:flex-row flex-col justify-center items-center">
                   <span className="text-2xl text-orange-400 mr-2">
                     {user.stars.map((star) => star)}
                   </span>
@@ -153,7 +153,7 @@ const Home = () => {
                     alt={`/reviewers/${user.imageName}`}
                     className="rounded-full h-14 w-14 object-cover mx-auto mt-2  hover:scale-110 transition duration-700 ease-in-out"
                   />
-                <div className="card-body items-center text-center">
+                <div className="flex flex-col items-center p-4 text-center">
                   <h2 className="card-title m-0">{user.name}</h2>
                   <p className="font-medium">{user.role}</p>
                   <div className="card-actions"></div>
