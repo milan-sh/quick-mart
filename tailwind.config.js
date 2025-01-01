@@ -12,6 +12,7 @@ export default {
         primaryButtonColor: "#0062EE",
         green: "#008A00",
         red: "#DC1D1D",
+        grayColor: "#6b7280"
       },
       boxShadow:{
         custom: 'rgba(100, 100, 111, 0.2) 0px 0px 29px 0px;'
