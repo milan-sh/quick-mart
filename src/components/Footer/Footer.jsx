@@ -11,7 +11,7 @@ import {
 const Footer = () => {
   return (
     <footer>
-      <div className="footer bg-secondaryBgColor text-white  p-10">
+      <div className="footer grid grid-cols-2 md:grid-cols-4 gap-x-0 bg-secondaryBgColor text-white  p-10">
         <nav>
           <h6 className="footer-title">Services</h6>
           <a className="link link-hover">Branding</a>
@@ -42,7 +42,7 @@ const Footer = () => {
               <input
                 type="email"
                 placeholder="yourname@gmail.com"
-                className="input input-bordered  join-item"
+                className="input md:input-bordered border border-white join-item px-2 "
                 required
               />
               <button className="btn btn-primary join-item">Subscribe</button>
@@ -50,12 +50,12 @@ const Footer = () => {
           </fieldset>
         </form>
       </div>
-      <div className="footer bg-secondaryBgColor text-white justify-between items-center p-4">
+      <div className=" bg-secondaryBgColor text-white justify-center gap-y-4 flex md:flex-row flex-col text-center md:justify-between items-center p-4">
         <aside className="grid-flow-col items-center">
           <Logo />
         </aside>
         <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
-        <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
+        <div className="grid grid-flow-col gap-4 md:place-self-center md:justify-self-end">
           <a href="https://github.com/milan-sh" target="_blank">
             <FontAwesomeIcon size="xl" icon={faGithub} />
           </a>
@@ -71,7 +71,7 @@ const Footer = () => {
           <a href="https://x.com/dev_81milan" target="_blank">
           <FontAwesomeIcon size="xl" icon={faTwitter} />
           </a>
-        </nav>
+        </div>
       </div>
     </footer>
   );
