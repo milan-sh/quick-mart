@@ -170,7 +170,7 @@ const Home = () => {
           )}
         </div>
       </div>
-      <div className="bg-white p-4 md:h-96 h-[60vh]">
+      <div className="bg-white p-4 md:h-96 h-[70vh]">
         <HeadingCard category="FAQs" />
         <div className="collapse collapse-plus bg-base-200 py-4">
           <input type="radio" name="my-accordion-3" defaultChecked />
