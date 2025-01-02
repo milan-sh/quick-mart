@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Filter, HeadingCard, Nav, SearchInput, Sliders, Footer } from "../components";
+import {
+  Filter,
+  HeadingCard,
+  Nav,
+  SearchInput,
+  Sliders,
+  Footer,
+} from "../components";
 
 // import Swiper core and required modules
 import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
@@ -34,7 +41,6 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-primaryBgColor">
-      <Nav />
       <Filter />
       <div className="w-[90%] m-auto mb-4 block md:hidden">
         <SearchInput />
@@ -164,38 +170,45 @@ const Home = () => {
           )}
         </div>
       </div>
-      <div className="bg-white p-4">
+      <div className="bg-white p-4 md:h-96 h-[50vh]">
         <HeadingCard category="FAQs" />
         <div className="collapse collapse-plus bg-base-200 py-4">
           <input type="radio" name="my-accordion-3" defaultChecked />
           <div className="collapse-title text-xl font-medium">
-          Q: What are your delivery hours?
+            Q: What are your delivery hours?
           </div>
           <div className="collapse-content">
-            <p>A: Quick Mart offers delivery from 8:00 AM to 10:00 PM daily. You can choose a delivery time slot that suits you during checkout.</p>
+            <p>
+              A: Quick Mart offers delivery from 8:00 AM to 10:00 PM daily. You
+              can choose a delivery time slot that suits you during checkout.
+            </p>
           </div>
         </div>
         <div className="collapse collapse-plus bg-base-200">
           <input type="radio" name="my-accordion-3" />
           <div className="collapse-title text-xl font-medium">
-          Q: Is there a minimum order value for free delivery?
+            Q: Is there a minimum order value for free delivery?
           </div>
           <div className="collapse-content">
-            <p>A: Yes, free delivery is available for orders above $50. For orders below this amount, a small delivery fee will apply.</p>
+            <p>
+              A: Yes, free delivery is available for orders above $50. For
+              orders below this amount, a small delivery fee will apply.
+            </p>
           </div>
         </div>
         <div className="collapse collapse-plus bg-base-200">
           <input type="radio" name="my-accordion-3" />
           <div className="collapse-title text-xl font-medium">
-          Q: Can I return or exchange items?
+            Q: Can I return or exchange items?
           </div>
           <div className="collapse-content">
-            <p>A: Yes, Quick Mart accepts returns or exchanges within 7 days of delivery, provided the items are in their original packaging and condition. Please contact our support team for assistance.</p>
+            <p>
+              A: Yes, Quick Mart accepts returns or exchanges within 7 days of
+              delivery, provided the items are in their original packaging and
+              condition. Please contact our support team for assistance.
+            </p>
           </div>
         </div>
-      </div>
-      <div>
-        <Footer/>
       </div>
     </div>
   );
