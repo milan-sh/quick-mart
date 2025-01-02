@@ -42,14 +42,14 @@ const Filter = () => {
           All Categories
         </p>
       </div>
-      <div className="flex items-center justify-between gap-x-2">
+      <div className="flex items-center justify-between gap-x-2 z-10">
         <Button content="Shop"/>
         <div className="flex-none">
           <ul className="menu menu-horizontal p-0">
             <li>
               <details>
                 <summary className="hover:text-primaryButtonColor text-base">LED TVs</summary>
-                <ul className="bg-base-100 rounded-t-none p-2">
+                <ul className=" rounded-t-none rounded-b-lg p-2 bg-white">
                   <li>
                     <a>TV 1</a>
                   </li>

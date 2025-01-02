@@ -36,7 +36,7 @@ const Nav = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content rounded-box z-[1] mt-3 w-52 p-2 shadow bg-white text-black"
+              className="menu menu-sm dropdown-content rounded-box z-10 mt-3 w-52 p-2 shadow bg-white text-black"
             >
               <li className="hover:text-primaryButtonColor">
                 <a className="justify-between">
@@ -75,7 +75,7 @@ const Nav = () => {
             </div>
             <div
               tabIndex={0}
-              className="card card-compact dropdown-content z-[1] mt-3 w-52 shadow bg-white text-black"
+              className="card card-compact dropdown-content z-10 mt-3 w-52 shadow bg-white text-black"
             >
               <div className="card-body">
                 <span className="text-lg font-bold">8 Items</span>

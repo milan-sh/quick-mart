@@ -45,7 +45,7 @@ const Home = () => {
       <div className="w-[90%] m-auto mb-4 block md:hidden">
         <SearchInput />
       </div>
-      <div className="m-4 rounded-lg h-[40vh] md:h-auto">
+      <div className="m-4  rounded-lg h-[40vh] md:h-auto">
         <Swiper
           // install Swiper modules
           modules={[Navigation, Pagination, A11y, Autoplay]}
