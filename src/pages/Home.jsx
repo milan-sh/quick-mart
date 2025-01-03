@@ -2,10 +2,8 @@ import React, { useEffect, useState } from "react";
 import {
   Filter,
   HeadingCard,
-  Nav,
   SearchInput,
   Sliders,
-  Footer,
 } from "../components";
 
 // import Swiper core and required modules
@@ -22,23 +20,25 @@ import "swiper/css/scrollbar";
 import { category } from "./category";
 import axios from "axios";
 import { rating } from "./rating";
+import { fetchProducts } from "../store/productsSlice";
+
 
 const Home = () => {
   const [data, setData] = useState(null);
 
-  const API_URL = "https://dummyjson.com/products?limit=90";
   useEffect(() => {
-    async function fetchProduts() {
+    const fetchData = async()=>{
       try {
-        const response = await axios.get(API_URL);
-        setData(response.data.products);
+        const response = await fetchProducts()
+        if(response) setData(response)
       } catch (error) {
-        console.log(error);
+        throw new Error("Items not found")
       }
     }
-    fetchProduts();
+    fetchData()
   }, []);
-
+  
+  console.log(data)
   return (
     <div className="min-h-screen bg-primaryBgColor">
       <Filter />
