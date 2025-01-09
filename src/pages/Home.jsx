@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Filter,
-  HeadingCard,
-  SearchInput,
-  Sliders,
-} from "../components";
+import { Filter, HeadingCard, SearchInput, Sliders } from "../components";
 
 // import Swiper core and required modules
 import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
@@ -18,27 +13,23 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
 import { category } from "./category";
-import axios from "axios";
 import { rating } from "./rating";
+import { useSelector, useDispatch } from "react-redux";
 import { fetchProducts } from "../store/productsSlice";
-
+import { useNavigate } from "react-router";
 
 const Home = () => {
-  const [data, setData] = useState(null);
+  const dispatch = useDispatch();
+  const { products, loading, error } = useSelector((state) => state.products);
+  const navigate = useNavigate()
 
   useEffect(() => {
-    const fetchData = async()=>{
-      try {
-        const response = await fetchProducts()
-        if(response) setData(response)
-      } catch (error) {
-        throw new Error("Items not found")
-      }
-    }
-    fetchData()
-  }, []);
-  
-  console.log(data)
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
+  // if (loading) return <h1>Loading....</h1>;
+  if (error) return <h1>{error}</h1>;
+
   return (
     <div className="min-h-screen bg-primaryBgColor">
       <Filter />
@@ -105,12 +96,47 @@ const Home = () => {
       </div>
       <div className="p-4 bg-gray-200">
         <HeadingCard category="Explore Products" className="bg-white" />
-        <div className="my-4 grid md:grid-cols-5 grid-cols-2 gap-4 flex-wrap">
-          {data &&
-            data.map((item) => (
+        <div className="my-4 grid md:grid-cols-5 grid-cols-2 gap-4 flex-wrap ">
+          {loading && (
+            <>
+              <div className="flex w-52 mx-2 md:mx-0 flex-col gap-4">
+                <div className="skeleton bg-grayColor h-32 w-full"></div>
+                <div className="skeleton bg-grayColor h-4 w-28"></div>
+                <div className="skeleton bg-grayColor h-4 w-full"></div>
+                <div className="skeleton bg-grayColor h-4 w-full"></div>
+              </div>
+              <div className="flex w-52 mx-2 md:mx-0 flex-col gap-4">
+                <div className="skeleton bg-grayColor h-32 w-full"></div>
+                <div className="skeleton bg-grayColor h-4 w-28"></div>
+                <div className="skeleton bg-grayColor h-4 w-full"></div>
+                <div className="skeleton bg-grayColor h-4 w-full"></div>
+              </div>
+              <div className="hidden md:flex w-52 flex-col gap-4">
+                <div className="skeleton bg-grayColor h-32 w-full"></div>
+                <div className="skeleton bg-grayColor h-4 w-28"></div>
+                <div className="skeleton bg-grayColor h-4 w-full"></div>
+                <div className="skeleton bg-grayColor h-4 w-full"></div>
+              </div>
+              <div className="hidden md:flex w-52 flex-col gap-4">
+                <div className="skeleton bg-grayColor h-32 w-full"></div>
+                <div className="skeleton bg-grayColor h-4 w-28"></div>
+                <div className="skeleton bg-grayColor h-4 w-full"></div>
+                <div className="skeleton bg-grayColor h-4 w-full"></div>
+              </div>
+              <div className="hidden md:flex w-52 flex-col gap-4">
+                <div className="skeleton bg-grayColor h-32 w-full"></div>
+                <div className="skeleton bg-grayColor h-4 w-28"></div>
+                <div className="skeleton bg-grayColor h-4 w-full"></div>
+                <div className="skeleton bg-grayColor h-4 w-full"></div>
+              </div>
+            </>
+          )}
+          {products &&
+            products.map((item) => (
               <div key={item.id} className="bg-white rounded-lg">
                 <img
-                  className="border-0 rounded-t-lg"
+                onClick={()=> navigate("/product")}
+                  className="border-0 rounded-t-lg cursor-pointer"
                   src={item.thumbnail}
                   alt={item.title}
                 />
@@ -118,7 +144,7 @@ const Home = () => {
                   <h3 className="md:hidden md:text-xl text-lg font-medium mb-2 text-wrap h-14 leading-5">
                     {item.title.slice(0, 32)}
                   </h3>
-                  <h3 className="hidden md:block md:text-xl text-base font-medium mb-2 text-wrap h-14">
+                  <h3 className="hidden md:block md:text-xl text-base font-medium mb-2 text-wrap h-14 hover:text-primaryButtonColor cursor-pointer">
                     {item.title.slice(0, 35)}
                   </h3>
                   <p className="font-semibold text-lg mb-2">
