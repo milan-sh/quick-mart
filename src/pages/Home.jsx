@@ -15,7 +15,7 @@ import "swiper/css/scrollbar";
 import { category } from "./category";
 import { rating } from "./rating";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchProducts } from "../store/productsSlice";
+import { fetchProducts, fetchProductById } from "../store/productsSlice";
 import { useNavigate } from "react-router";
 
 const Home = () => {
@@ -26,6 +26,12 @@ const Home = () => {
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
+
+  const handleProductClick = (id)=>{
+    console.log(id)
+    dispatch(fetchProductById(id))
+    navigate("/product")
+  }
 
   // if (loading) return <h1>Loading....</h1>;
   if (error) return <h1>{error}</h1>;
@@ -135,7 +141,7 @@ const Home = () => {
             products.map((item) => (
               <div key={item.id} className="bg-white rounded-lg">
                 <img
-                onClick={()=> navigate("/product")}
+                onClick={()=>handleProductClick(item.id)}
                   className="border-0 rounded-t-lg cursor-pointer"
                   src={item.thumbnail}
                   alt={item.title}

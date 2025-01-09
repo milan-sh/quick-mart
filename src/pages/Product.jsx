@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, HeadingCard, QuantityButton } from "../components/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router";
 import {
   faTruckFast,
   faArrowTurnUp,
@@ -8,39 +9,42 @@ import {
   faListCheck
 } from "@fortawesome/free-solid-svg-icons";
 
+import { useSelector } from "react-redux";
+
 const Product = () => {
+
+  const {selectedProduct} = useSelector((state)=>state.products)
+
   return (
     <div className="bg-primaryBgColor p-4">
       <div className="breadcrumbs text-base font-medium">
         <ul>
           <li>
-            <a>Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a>MacBook</a>
+            {selectedProduct.title}
           </li>
         </ul>
       </div>
       <div className="grid md:grid-cols-2 md:mt-5">
-        <img className="md:w-[40vw] mx-auto" src="mac.png" alt="macbook" />
+        <img className="md:w-[40vw] mx-auto" src={`${selectedProduct.thumbnail}`} alt="macbook" />
         <div className="px-6 py-4">
           <h2 className="font-medium text-xl md:text-3xl">
-            Apple MacBook Pro 14 Inch Space Grey
+            {selectedProduct.title}
           </h2>
-          <h3 className="font-medium text-2xl my-3">Rs. 52,200.00</h3>
+          <h3 className="font-medium text-2xl my-3">Rs. {Math.round(selectedProduct.price * 85.88).toLocaleString('en-IN')}.00</h3>
           <p className="text-secondaryBgColor">
             <span className="font-medium text-grayColor">Description: </span>The
-            MacBook Pro 14 Inch in Space Grey is a powerful and sleek laptop,
-            featuring Apple's M1 Pro chip for exceptional performance and a
-            stunning Retina display.
+            {selectedProduct.description}
           </p>
           <ul className="text-green my-3 list-disc list-inside">
-            <li>In stock (45 units), ready to be shipped</li>
+            <li>In stock ({selectedProduct.stock} units), ready to be shipped</li>
           </ul>
           <div className="h-1 w-full bg-gray-200 rounded-full">
             <div
               className="min-h-full bg-green rounded-full"
-              style={{ width: `50%` }}
+              style={{ width: `${selectedProduct.stock}%` }}
             ></div>
           </div>
           <p className="text-grayColor font-medium my-4">Quantity</p>
@@ -102,10 +106,10 @@ const Product = () => {
           </div>
           <h4 className="font-medium text-lg flex justify-start items-center mt-4"><span className="mr-4"><FontAwesomeIcon icon={faListCheck} /></span>About the Product</h4>
           <ul className="p-2 list-disc list-inside text-sm md:text-base">
-            <li>Wight: 2.5kg</li>
-            <li>Width: 12.38</li>
-            <li>Height: 21.55</li>
-            <li>Warranty: 1 month warranty</li>
+            <li>Wight: {Math.ceil(selectedProduct.weight * 0.45359237 )}kg</li>
+            <li>Width: {selectedProduct.dimensions.width}</li>
+            <li>Height: {selectedProduct.dimensions.height}</li>
+            <li>{selectedProduct.warrantyInformation}</li>
           </ul>
         </div>
       </div>
