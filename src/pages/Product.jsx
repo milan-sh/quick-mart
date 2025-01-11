@@ -106,7 +106,6 @@ const Product = () => {
           </div>
           <h4 className="font-medium text-lg flex justify-start items-center mt-4"><span className="mr-4"><FontAwesomeIcon icon={faListCheck} /></span>About the Product</h4>
           <ul className="p-2 list-disc list-inside text-sm md:text-base">
-            <li>Wight: {Math.ceil(selectedProduct.weight * 0.45359237 )}kg</li>
             <li>Width: {selectedProduct.dimensions.width}</li>
             <li>Height: {selectedProduct.dimensions.height}</li>
             <li>{selectedProduct.warrantyInformation}</li>

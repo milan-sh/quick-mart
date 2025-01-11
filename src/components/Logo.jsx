@@ -1,9 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 const Logo = () => {
   return (
     <div className='text-3xl md:text-4xl font-bold'>
-      <h1>QuickMart</h1>
+      <Link to="/">QuickMart</Link>
     </div>
   )
 }

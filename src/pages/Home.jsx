@@ -17,6 +17,7 @@ import { rating } from "./rating";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProducts, fetchProductById } from "../store/productsSlice";
 import { useNavigate } from "react-router";
+import {addItem} from "../store/cartSlice"
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -28,7 +29,6 @@ const Home = () => {
   }, [dispatch]);
 
   const handleProductClick = (id)=>{
-    console.log(id)
     dispatch(fetchProductById(id))
     navigate("/product")
   }

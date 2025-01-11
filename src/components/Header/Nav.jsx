@@ -7,8 +7,13 @@ import {
   faBagShopping,
 } from "@fortawesome/free-solid-svg-icons";
 import SearchInput from "../SearchInput";
+import { Link } from "react-router";
+import { useSelector } from "react-redux";
 
 const Nav = () => {
+
+  const {totalQuantity, totalPrice} = useSelector((state)=> state.cart)
+
   return (
     <nav className="p-4 flex justify-between items-center">
       <div className="flex items-center justify-between gap-x-4">
@@ -69,7 +74,7 @@ const Nav = () => {
               <div className="indicator">
                 <FontAwesomeIcon size="2xl" icon={faBagShopping} />
                 <span className="badge badge-sm rounded-full indicator-item bg-primaryButtonColor text-white p-2">
-                  0
+                  {totalQuantity}
                 </span>
               </div>
             </div>
@@ -78,11 +83,11 @@ const Nav = () => {
               className="card card-compact dropdown-content z-10 mt-3 w-52 shadow bg-white text-black"
             >
               <div className="card-body">
-                <span className="text-lg font-bold">8 Items</span>
-                <span className="text-info">Subtotal: $999</span>
+                <span className="text-lg font-bold">{totalQuantity} items</span>
+                <span className="text-info">Subtotal: Rs. {(totalPrice).toLocaleString('en-IN')}.00</span>
                 <div className="card-actions">
                   <button className="btn bg-primaryButtonColor text-white hover:bg-secondaryBgColor btn-block">
-                    View cart
+                    <Link to="cart">View cart</Link>
                   </button>
                 </div>
               </div>
@@ -91,7 +96,7 @@ const Nav = () => {
           <button className="hidden md:block">
             <p className="text-sm font-medium text-left leading-none">Cart</p>
             <h2 className="font-medium leading-none">
-              Rs. <span>0.00</span>
+              Rs. <span>{(totalPrice).toLocaleString('en-IN')}.00</span>
             </h2>
           </button>
         </div>
