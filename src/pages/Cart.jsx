@@ -52,7 +52,7 @@ const Cart = () => {
         </div>
         <p className="text-sm">Taxes and shipping calculated at checkout</p>
         <Button
-        content="Cart"
+        content="Checkout"
         className="bg-primaryButtonColor text-white hover:bg-secondaryBgColor hover:text-white w-full md:w-96"
         />
       </div>
