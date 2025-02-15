@@ -2,8 +2,26 @@ import React from "react";
 import { Button, HeadingCard, QuantityButton } from "../components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router";
 
 const Cart = () => {
+  const { items } = useSelector((state) => state.cart);
+  console.log("items", items)
+
+  if (items.length === 0) {
+    return (
+      <div className="flex flex-col justify-center items-center p-8">
+        <img className="h-36" src="empty-cart.png" alt="" />
+        <p className="font-semibold text-lg">Your cart is empty</p>
+        <Link to="/"><Button
+        content="Continue Shopping"
+        className="bg-primaryButtonColor text-white mt-8 cursor-pointer hover:bg-secondaryBgColor hover:text-primaryBgColor"
+        /></Link>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-primaryBgColor p-4">
       <div className="breadcrumbs text-base font-medium mb-4">
@@ -16,9 +34,13 @@ const Cart = () => {
           </li>
         </ul>
       </div>
-      <HeadingCard category="Shopping cart" link="Continue Shopping" size="md:text-xl text-lg"/>
+      <HeadingCard
+        category="Shopping cart"
+        link="Continue Shopping"
+        size="md:text-xl text-lg"
+      />
       <div className="my-3 bg-gray-200 p-6 rounded-lg">
-        <div className="flex justify-between items-center font-medium">
+        <div className="hidden md:flex justify-between items-center font-medium">
           <h2>PRODUCTS</h2>
           <p>QUANTITY</p>
           <p>TOTAL</p>
@@ -52,8 +74,8 @@ const Cart = () => {
         </div>
         <p className="text-sm">Taxes and shipping calculated at checkout</p>
         <Button
-        content="Checkout"
-        className="bg-primaryButtonColor text-white hover:bg-secondaryBgColor hover:text-white w-full md:w-96"
+          content="Checkout"
+          className="bg-primaryButtonColor text-white hover:bg-secondaryBgColor hover:text-white w-full md:w-96"
         />
       </div>
     </div>

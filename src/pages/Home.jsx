@@ -33,6 +33,11 @@ const Home = () => {
     navigate("/product")
   }
 
+  const addToCart=(id)=>{
+    const product = fetchProductById(id)
+    dispatch(addItem(product))
+  }
+
   // if (loading) return <h1>Loading....</h1>;
   if (error) return <h1>{error}</h1>;
 
@@ -165,7 +170,9 @@ const Home = () => {
                   <p className="text-green font-medium text-base">
                     {item.stock} in stock
                   </p>
-                  <button className="bg-primaryButtonColor text-white py-2 rounded-md mt-4 font-medium min-w-full cursor-pointer hover:bg-secondaryBgColor">
+                  <button className="bg-primaryButtonColor text-white py-2 rounded-md mt-4 font-medium min-w-full cursor-pointer hover:bg-secondaryBgColor"
+                  onClick={()=>dispatch(addItem(item))}
+                  >
                     Add To Cart
                   </button>
                 </div>

@@ -15,7 +15,7 @@ const Nav = () => {
   const {totalQuantity, totalPrice} = useSelector((state)=> state.cart)
 
   return (
-    <nav className="p-4 flex justify-between items-center">
+    <nav className="p-4 sticky top-0 z-50 bg-primaryBgColor flex justify-between items-center">
       <div className="flex items-center justify-between gap-x-4">
         <FontAwesomeIcon className="md:hidden" size="2xl" icon={faBars} />
         <Logo />
