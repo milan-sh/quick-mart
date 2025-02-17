@@ -18,20 +18,15 @@ const cartSlice = createSlice({
                 existingItem.quantity += 1; //update quantity if item exists
             }else{
                 state.items.push({...item, quantity: item.quantity || 1}); //adding item if item doesn't exists
+                state.totalQuantity += 1;
             }
             // console.log("items are", JSON.parse(JSON.stringify(state.items)));
-
-            state.totalQuantity += 1
-            state.totalPrice = Number(state.totalPrice) + (item.price*88) * (item.quantity || 1); 
+            state.totalPrice = Number(state.totalPrice) + (Math.round(item.price*85.49)) * (item.quantity || 1); 
         },
         removeItem: (state, action)=>{
             state.items.filter((item)=>{
                 item.id !== action.payload
             })
-        },
-        updateQuantity: (state, action)=>{
-            const item = state.items.findIndex((item)=> item.id === action.payload.id)
-            item.quantity = action.payload.quantity
         }
     },
 })

@@ -4,7 +4,6 @@ import Sliders from "./Sliders";
 import SearchInput from "./SearchInput";
 import HeadingCard from "./HeadingCard";
 import Footer from "./Footer/Footer";
-import QuantityButton from "./QuantityButton";
 import Button from "./Button";
 
-export {Nav, Filter, Sliders, SearchInput, HeadingCard, Footer, QuantityButton, Button}
+export {Nav, Filter, Sliders, SearchInput, HeadingCard, Footer, Button}

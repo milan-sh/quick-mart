@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, HeadingCard, QuantityButton } from "../components/index";
+import { Button, HeadingCard } from "../components/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router";
 import {
@@ -16,9 +16,6 @@ const Product = () => {
   const { selectedProduct } = useSelector((state) => state.products);
   const dispatch = useDispatch();
 
-  const addToCart = (id) => {
-    dispatch(addItem(id));
-  };
 
   return (
     <div className="bg-primaryBgColor p-4">
@@ -64,11 +61,11 @@ const Product = () => {
           </div>
           <p className="text-grayColor font-medium my-4">Quantity</p>
           <div className="grid grid-cols-2 md:grid-cols-4 w-full">
-            <QuantityButton />
+            {/* <QuantityButton /> */}
             <Button
               className="rounded-lg bg-primaryButtonColor hover:bg-secondaryBgColor text-white hover:text-white md:col-span-3"
               onClick={() => {
-                console.log("Selected Product:", selectedProduct); // Debugging
+                // console.log("Selected Product:", selectedProduct); // Debugging
                 dispatch(addItem(selectedProduct));
               }}
             >Add to cart</Button>
