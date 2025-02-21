@@ -18,13 +18,18 @@ const cartSlice = createSlice({
             state.totalPrice = Number(state.totalPrice) + (Math.round(item.price*85.49)) ; 
         },
         removeItem: (state, action)=>{
-            state.items.filter((item)=>{
-                item.id !== action.payload
+            const itemToRemove = state.items.find((item)=> item.id === action.payload)
+            console.log(itemToRemove)
+            state.items = state.items.filter((item)=>{
+                return item.id !== action.payload
             })
+            state.totalQuantity -= 1;
+            state.totalPrice = Number(state.totalPrice) - (Math.round(itemToRemove.price*85.49) * itemToRemove.quantity)
+
+            console.log(JSON.parse(JSON.stringify(state.items)))
         },
         updateQuantity: (state, action)=>{
             const {id, quantity} = action.payload
-            console.log(id, quantity)
             const itemToUpdate = state.items.find((item)=> item.id === id)
             if(!itemToUpdate){
                 return
@@ -33,6 +38,9 @@ const cartSlice = createSlice({
                     itemToUpdate.quantity +=1
                     state.totalPrice = Number(state.totalPrice) + (Math.round(itemToUpdate.price*85.49));
                 }else if(quantity===-1){
+                    if(itemToUpdate.quantity===1){
+                        return
+                    }
                     itemToUpdate.quantity -=1
                     state.totalPrice = Number(state.totalPrice) - (Math.round(itemToUpdate.price*85.49));
                 }

@@ -83,7 +83,7 @@ const Cart = () => {
                   </button>
                 </div>
                 <button
-                
+                onClick={()=>dispatch(removeItem(item.id))}
                 >
                   <FontAwesomeIcon className="text-gray-600" icon={faTrash} />
                 </button>
@@ -101,9 +101,9 @@ const Cart = () => {
           <h2 className="text-xl">Rs. {totalPrice}.00</h2>
         </div>
         <p className="text-sm">Taxes and shipping calculated at checkout</p>
-        <Button className="bg-primaryButtonColor text-white hover:bg-secondaryBgColor hover:text-white w-full md:w-96">
+        <Link to="/checkout"><Button className="bg-primaryButtonColor text-white hover:bg-secondaryBgColor hover:text-white w-full md:w-96">
           Checkout
-        </Button>
+        </Button></Link>
       </div>
     </div>
   );
