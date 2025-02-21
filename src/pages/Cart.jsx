@@ -3,7 +3,7 @@ import { Button, HeadingCard } from "../components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { useSelector, useDispatch } from "react-redux";
-import { addItem, removeItem } from "../store/cartSlice";
+import { updateQuantity, removeItem } from "../store/cartSlice";
 import { Link } from "react-router";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 
@@ -69,18 +69,22 @@ const Cart = () => {
               </div>
               <div className="flex justify-end md:justify-center items-center gap-x-4">
                 <div className="flex justify-between items-center gap-x-4 w-fit border border-gray-200 rounded-lg">
-                  <button className="px-4 py-1 text-grayColor cursor-pointer">
+                  <button className="px-4 py-1 text-grayColor cursor-pointer"
+                  onClick={()=>dispatch(updateQuantity({id:item.id, quantity:-1}))}
+                  >
                     <FontAwesomeIcon icon={faMinus} />
                   </button>
                   <p>{item.quantity}</p>
                   <button
                     className="px-4 py-1 cursor-pointer"
-                    onClick={()=>dispatch(addItem(item))}
+                    onClick={()=>dispatch(updateQuantity({id:item.id, quantity:1}))}
                   >
                     <FontAwesomeIcon icon={faPlus} />
                   </button>
                 </div>
-                <button>
+                <button
+                
+                >
                   <FontAwesomeIcon className="text-gray-600" icon={faTrash} />
                 </button>
               </div>
