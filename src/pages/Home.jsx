@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Filter, HeadingCard, SearchInput, Sliders } from "../components";
+import {
+  Button,
+  Filter,
+  HeadingCard,
+  SearchInput,
+  Sliders,
+} from "../components";
 
 // import Swiper core and required modules
 import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
@@ -17,26 +23,36 @@ import { rating } from "./rating";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProducts, fetchProductById } from "../store/productsSlice";
 import { useNavigate } from "react-router";
-import {addItem} from "../store/cartSlice"
+import { addItem } from "../store/cartSlice";
 
 const Home = () => {
   const dispatch = useDispatch();
   const { products, loading, error } = useSelector((state) => state.products);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [cards, setCards] = useState([]);
+  const [visibleCards, setVisibleCards] = useState(10);
+
+  useEffect(() => {
+    setCards(products);
+  }, [products]);
 
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  const handleProductClick = (id)=>{
-    dispatch(fetchProductById(id))
-    navigate("/product")
-  }
+  const handleProductClick = (id) => {
+    dispatch(fetchProductById(id));
+    navigate("/product");
+  };
 
-  const addToCart=(id)=>{
-    const product = fetchProductById(id)
-    dispatch(addItem(product))
-  }
+  const addToCart = (id) => {
+    const product = fetchProductById(id);
+    dispatch(addItem(product));
+  };
+
+  const showMore = () => {
+    setVisibleCards((prevList) => prevList + 10);
+  };
 
   // if (loading) return <h1>Loading....</h1>;
   if (error) return <h1>{error}</h1>;
@@ -142,11 +158,11 @@ const Home = () => {
               </div>
             </>
           )}
-          {products &&
-            products.map((item) => (
+          {cards &&
+            cards.slice(0, visibleCards).map((item) => (
               <div key={item.id} className="bg-white rounded-lg">
                 <img
-                onClick={()=>handleProductClick(item.id)}
+                  onClick={() => handleProductClick(item.id)}
                   className="border-0 rounded-t-lg cursor-pointer"
                   src={item.thumbnail}
                   alt={item.title}
@@ -170,14 +186,23 @@ const Home = () => {
                   <p className="text-green font-medium text-base">
                     {item.stock} in stock
                   </p>
-                  <button className="bg-primaryButtonColor text-white py-2 rounded-md mt-4 font-medium min-w-full cursor-pointer hover:bg-secondaryBgColor"
-                  onClick={()=>dispatch(addItem(item))}
+                  <button
+                    className="bg-primaryButtonColor text-white py-2 rounded-md mt-4 font-medium min-w-full cursor-pointer hover:bg-secondaryBgColor"
+                    onClick={() => dispatch(addItem(item))}
                   >
                     Add To Cart
                   </button>
                 </div>
               </div>
             ))}
+          {visibleCards < cards.length && (
+            <Button
+              onClick={showMore}
+              className="bg-secondaryBgColor text-white mx-auto px-8"
+            >
+              Show more..
+            </Button>
+          )}
         </div>
       </div>
       <div className="p-4 bg-gray-200">
